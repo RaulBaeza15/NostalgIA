@@ -17,7 +17,14 @@ Because real pairs of damaged/undamaged photos do not exist at scale, the projec
 - **Dataset:** CelebA (~210,000 celebrity face images, 218x178x3), chosen because the target use case is restoring photos of people.
 - **Synthetic damage pipeline:** grayscale conversion with the channel replicated three times, Perlin noise with two thresholds to simulate tears (dark center and white edge), and Perlin noise combined with the Canny method to draw realistic creases and scratches.
 - **First approach, GAN:** a generator received the damaged image and reconstructed it, while a discriminator learned to tell real images from generated ones. Promising results on the black-and-white defect, but the model struggled with tears and scratches even after improvements such as a dropout layer in the discriminator.
+
+  ![Colorization with the GAN approach: original photo, black-and-white input and recolored output](docs/images/colorization-gan.png)
+
 - **Final approach, U-Net:** the damaged image goes in as input and the network must output the repaired image. This architecture produced satisfactory results and met the project goals.
+
+  ![Scratch restoration with U-Net: original, scratched and restored photo](docs/images/unet-scratch-restoration.png)
+
+  ![Tear restoration with U-Net: original, torn and restored photo](docs/images/unet-tear-restoration.png)
 
 ## Repository contents
 
